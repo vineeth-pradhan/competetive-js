@@ -18,4 +18,4 @@ function narrow(left, right, x, n) {
   }
 }
 
-console.log(root(7, 3)) // Should return 3
+console.log(root(9, 2)) // Should return 3.000
