@@ -51,14 +51,14 @@ function solution(A) {
   var trace = 0;
   var min;
 
-  for(let i = 0; i < A.length; i++) {
-    trace += A[i];
-    let newMin = Math.abs(Math.abs(trace) - Math.abs(sum - trace));
+  for(let i = 1; i < A.length; i++) {
+    trace += A[i-1];
+    let newMin = Math.abs(trace - (sum - trace));
     if(min === undefined || (newMin < min)){ min = newMin; }
   }
 
   return Math.abs(min);
 }
 
-console.log(solution([-3, -1, -2, -4, -3]));
+console.log(solution([3, 1, 2, 4, 3]));
 
