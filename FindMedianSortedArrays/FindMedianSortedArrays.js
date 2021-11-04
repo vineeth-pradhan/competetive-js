@@ -33,9 +33,28 @@ Output: 2.00000
  * @return {number}
  */
 var findMedianSortedArrays = function(nums1, nums2) {
-  var mergedArray = [];
-  var i = 0, j = 0;
+  mergedArray = [];
+  i = 0, j = 0;
   var median;
+  merge(nums1, nums2);
+  nums1[i] !== undefined ? finish(nums1, i) : finish(nums2, j);
+
+  return findMedian();
+};
+
+var findMedian = function(){
+  if(mergedArray.length % 2 === 0){
+    let mid = mergedArray.length / 2;
+    median = (mergedArray[mid - 1] + mergedArray[mid])/2;
+  }
+  else {
+    let mid = Math.floor(mergedArray.length / 2);
+    median = mergedArray[mid];
+  }
+  return median;
+}
+
+var merge = function(nums1, nums2){
   while(nums1[i] !== undefined && nums2[j] !== undefined) {
     if(nums1[i] < nums2[j]) {
       mergedArray.push(nums1[i]);
@@ -46,26 +65,12 @@ var findMedianSortedArrays = function(nums1, nums2) {
       j++;
     }
   }
-  if(nums1[i] !== undefined) {
-    while(nums1[i] !== undefined){
-      mergedArray.push(nums1[i]);
-      i++;
-    }
+}
+
+var finish = function(arr, ind){
+  while(arr[ind] !== undefined){
+    mergedArray.push(arr[ind]);
+    ind++;
   }
-  else {
-    while(nums2[j] !== undefined){
-      mergedArray.push(nums2[j]);
-      j++;
-    }
-  }
-  if(mergedArray.length % 2 === 0){
-    let mid = mergedArray.length / 2;
-    median = (mergedArray[mid - 1] + mergedArray[mid])/2;
-  }
-  else {
-    let mid = Math.floor(mergedArray.length / 2);
-    median = mergedArray[mid];
-  }
-  return median;
-};
+}
 console.log(findMedianSortedArrays([0, 0], [0, 0]));
