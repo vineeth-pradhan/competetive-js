@@ -33,8 +33,14 @@ Constraints:
  * @return {boolean}
  */
 var isPalindrome = function(x) {
-  let mid = Math.floor(x.toString().length / 2);
-  return (Math.floor(x.toString().length / 2));
+  let xStr = x.toString();
+  let mid = Math.floor(xStr.toString().length / 2);
+  if(xStr.length % 2 === 0){
+    return xStr.substring(0,mid) === xStr.substring(mid,xStr.length).split("").reverse().join("");
+  }
+  else{
+    return xStr.substring(0,mid) === xStr.substring(mid+1,xStr.length).split("").reverse().join("");;
+  }
 };
 
-console.log(isPalindrome(-121));
+console.log(isPalindrome(000));
