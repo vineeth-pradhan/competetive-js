@@ -33,8 +33,16 @@ Constraints:
  * @return {boolean}
  */
 var isPalindrome = function(x) {
+  var noOfDigits = Math.floor(Math.log10(Math.abs(x)));
   y = x % 10;
-  z = Math.floor(x / 1000);
+  z = Math.floor(x / Math.pow(10, noOfDigits));
+  while(y === z) {
+    x = x - Math.pow(10, noOfDigits);
+    x = (x - (x % 10)) / 10
+    y = x % 10;
+    noOfDigits = Math.floor(Math.log10(Math.abs(x)));
+    z = Math.floor(x / Math.pow(10, noOfDigits));
+  }
   return y.toString()+", "+z.toString();
 };
 
