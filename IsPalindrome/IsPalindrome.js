@@ -33,17 +33,17 @@ Constraints:
  * @return {boolean}
  */
 var isPalindrome = function(x) {
-  var noOfDigits = Math.floor(Math.log10(Math.abs(x)));
-  y = x % 10;
-  z = Math.floor(x / Math.pow(10, noOfDigits));
-  while(y === z) {
-    x = x - Math.pow(10, noOfDigits);
+  var decimalPlace = Math.floor(Math.log10(Math.abs(x)));
+  d1 = x % 10;
+  d2 = Math.floor(x / Math.pow(10, decimalPlace));
+  while(d1 === d2) {
+    x = x - Math.pow(10, decimalPlace);
     x = (x - (x % 10)) / 10
-    y = x % 10;
-    noOfDigits = Math.floor(Math.log10(Math.abs(x)));
-    z = Math.floor(x / Math.pow(10, noOfDigits));
+    d1 = x % 10;
+    decimalPlace = Math.floor(Math.log10(Math.abs(x)));
+    d2 = Math.floor(x / Math.pow(10, decimalPlace));
   }
-  return y.toString()+", "+z.toString();
+  return d1 === d2
 };
 
 console.log(isPalindrome(1221));
