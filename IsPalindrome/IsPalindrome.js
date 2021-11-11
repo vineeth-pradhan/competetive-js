@@ -36,14 +36,14 @@ var isPalindrome = function(x) {
   var decimalPlace = Math.floor(Math.log10(Math.abs(x)));
   d1 = x % 10;
   d2 = Math.floor(x / Math.pow(10, decimalPlace));
-  while(d1 === d2) {
+  while(d1 === d2 && decimalPlace > 0) {
     x = x - Math.pow(10, decimalPlace);
     x = (x - (x % 10)) / 10
     d1 = x % 10;
     decimalPlace = Math.floor(Math.log10(Math.abs(x)));
     d2 = Math.floor(x / Math.pow(10, decimalPlace));
   }
-  return d1 === d2
+  return decimalPlace < 2;
 };
 
 console.log(isPalindrome(1221));
