@@ -31,4 +31,6 @@ Constraints:
  * @return {string}
  */
 var longestPalindrome = function(s) {
+  // 1. Write logic to find if a given string is palindrome or not. For eg. isPalindrom(string)
+  // 2. Write logic for string traversal at each index. Iterate through string and find various possibilities of palindrome at various index
 };
